@@ -1,0 +1,6 @@
+framework module Pods_FXStepperTests {
+  umbrella header "Pods-FXStepperTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

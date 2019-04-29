@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FXStepper" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6y3-IA-wWF"/>
+                        <viewControllerLayoutGuide type="bottom" id="PxM-E5-Xct"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96J-Gt-55U" customClass="FXStepper" customModule="FXStepper" customModuleProvider="target">
+                                <rect key="frame" x="157" y="433" width="100" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="QoZ-lh-NUD"/>
+                                    <constraint firstAttribute="height" constant="30" id="cWU-Bw-SgO"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="stepperValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rq4-cK-K2t"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAF-Tm-yFv">
+                                <rect key="frame" x="186" y="372" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="RUV-ov-Wdz"/>
+                                    <constraint firstAttribute="height" constant="21" id="sdU-WH-JAu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="96J-Gt-55U" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="3wz-Mh-RZq"/>
+                            <constraint firstItem="96J-Gt-55U" firstAttribute="top" secondItem="PAF-Tm-yFv" secondAttribute="bottom" constant="40" id="N7P-UO-YtR"/>
+                            <constraint firstItem="96J-Gt-55U" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bE5-14-olF"/>
+                            <constraint firstItem="PAF-Tm-yFv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tXZ-Ls-JkY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="stepper" destination="96J-Gt-55U" id="Ryj-iR-gFJ"/>
+                        <outlet property="valueLabel" destination="PAF-Tm-yFv" id="1fi-sl-hTa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="18.75"/>
+        </scene>
+    </scenes>
+</document>
