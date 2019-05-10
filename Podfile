@@ -9,7 +9,7 @@ target 'FXStepper' do
   use_frameworks!
 
   # Pods for FXStepper
-  pod 'SnapKit'
+#  pod 'SnapKit'
   pod 'RxSwift'
   pod 'RxCocoa'
 

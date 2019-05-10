@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import SnapKit
 
+@IBDesignable
 public class FXStepper: UIControl {
     
     /// ➖ 按钮
@@ -33,6 +33,8 @@ public class FXStepper: UIControl {
     /// 步进计时器
     private var stepTimer : NormalTimer?
     
+/************************************************************/
+    
     /// 数值
     public var value:Double = 0.0 {
         didSet {
@@ -45,9 +47,24 @@ public class FXStepper: UIControl {
         }
     }
     /// 最小值
-    public var minimumValue:Double = 0.0
+    public var minimumValue:Double = 0.0 {
+        didSet {
+            if minimumValue > maximumValue {
+                maximumValue = minimumValue
+            }
+            if minimumValue > value {
+                value = minimumValue
+            }
+        }
+    }
     /// 最大值
-    public var maximumValue:Double = 100.0
+    public var maximumValue:Double = 100.0 {
+        didSet {
+            if maximumValue < minimumValue {
+                minimumValue = maximumValue
+            }
+        }
+    }
     /// 步进值
     public var stepValue:Double = 1.0
     /// 按住按钮时是否自动持续递增或递减
@@ -55,8 +72,12 @@ public class FXStepper: UIControl {
 //    /// 控制值是否在[minimumValue,maximumValue]区间内循环
 //    var wraps = false
 
-    public init() {
-        super.init(frame: .zero)
+    public convenience init() {
+        self.init(frame: CGRect(x: 0, y: 0, width: 120, height: 30))
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         createSubviews()
     }
     
@@ -102,31 +123,17 @@ public class FXStepper: UIControl {
         self.addSubview(separatorView)
         self.addSubview(plusButton)
         
-        setSubviewLayout()
     }
     
-    
-    // MARK: 设置子视图约束
-    private func setSubviewLayout() {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
         
-        minusButton.snp.makeConstraints { (make) in
-            make.leading.top.bottom.equalToSuperview()
-//            make.width.equalTo(25)
-            make.height.equalTo(30)
-        }
+        minusButton.frame = CGRect(x: 0, y: 0, width: (bounds.width - 1) / 2.0, height: bounds.height)
         
-        separatorView.snp.makeConstraints { (make) in
-            make.leading.equalTo(minusButton.snp.trailing)
-            make.width.equalTo(1)
-            make.centerY.equalToSuperview()
-            make.height.equalTo(12)
-        }
+        separatorView.frame = CGRect(x: minusButton.frame.maxX, y: 8, width: 1, height: bounds.height - 16)
         
-        plusButton.snp.makeConstraints { (make) in
-            make.leading.equalTo(separatorView.snp.trailing)
-            make.width.top.bottom.equalTo(minusButton)
-            make.trailing.equalToSuperview()
-        }
+        plusButton.frame = CGRect(x: separatorView.frame.maxX, y: 0, width: (bounds.width - 1) / 2.0, height: bounds.height)
+        
     }
     
     // MARK: 开始计数
